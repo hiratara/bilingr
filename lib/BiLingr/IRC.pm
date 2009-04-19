@@ -21,6 +21,11 @@ has channel => (
 	required => 1,
 );
 
+has key => (
+	isa      => 'Str',
+	is       => 'ro',
+);
+
 has charset => (
 	isa      => 'Str',
 	is       => 'ro',
@@ -55,7 +60,11 @@ sub START {
 
 event irc_001 => sub {
 	my ( $self ) = @_[OBJECT, ARG0 .. $#_];
-	$self->_irc->yield( join => $self->channel );
+
+	my $channel = $self->channel;
+	$channel .= ' ' . $self->key if $self->key;
+
+	$self->_irc->yield( join => $channel );
 };
 
 event irc_public => sub {

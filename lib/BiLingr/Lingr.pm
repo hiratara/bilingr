@@ -14,10 +14,20 @@ has room => (
 	required => 1,
 );
 
+has pass => (
+	isa      => 'Str',
+	is       => 'ro',
+);
+
 has nick => (
 	isa      => 'Str',
 	is       => 'ro',
 	default  => __PACKAGE__,
+);
+
+has irc => (
+	isa        => 'Int',
+	is         => 'rw',
 );
 
 has irc => (
@@ -52,7 +62,11 @@ event 'lingr.session.create' => sub {
 	my ( $self, $event ) = @_[OBJECT, ARG0 .. $#_];
 	$poe_kernel->call(
 		$self->_lingr => call => 
-		'room.enter', { id => $self->room, nickname => $self->nick });
+		'room.enter', { 
+			id       => $self->room, nickname => $self->nick,
+			password => $self->pass,
+		}
+	);
 };
 
 event 'lingr.room.enter' => sub {

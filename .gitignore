@@ -6,4 +6,5 @@ inc
 pm_to_blib
 MANIFEST
 Makefile.old
-myprivate.yaml
+myprivate*.yaml
+*~
