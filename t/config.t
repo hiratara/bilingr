@@ -1,15 +1,21 @@
 use strict;
 use warnings;
 use BiLingr;
-use Test::More tests => 6;
+use Test::More tests => 12;
 
 
 # default config file is 'bilingr.[ANY]'.
 my $b1 = BiLingr->new_with_config();
 
-is $b1->lingr->{api_key}, 'API_KEY';
-is $b1->lingr->{room},    'ROOM';
-is $b1->lingr->{nick},    'NICK';
+ok $b1->lingr->{api_key};
+ok $b1->lingr->{room};
+ok $b1->lingr->{pass};
+ok $b1->lingr->{nick};
+ok $b1->irc->{server};
+ok $b1->irc->{channel};
+ok $b1->irc->{key};
+ok $b1->irc->{nick};
+ok $b1->irc->{charset};
 
 
 # set config file explicitly

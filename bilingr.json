@@ -1,13 +1,15 @@
 {
     'lingr': {
-        'api_key': 'API_KEY',
-        'room'   : 'ROOM',
-        'nick'   : 'NICK'
+        'api_key': 'your api key',
+        'room'   : 'your room name',
+        'pass'   : 'rooms password (if needed)',
+        'nick'   : 'bot nick name'
     },
     'irc': {
-        'server' : 'IRC_SERVER',
-        'channel': 'IRC_CHANNEL',
-        'nick'   : 'IRC_NICK',
-        'charset': 'IRC_CHARSET'
+        'server' : 'irc host name',
+        'channel': 'channel name',
+        'key'    : 'channel key (if needed)',
+        'nick'   : 'bot nick name',
+        'charset': 'charset of send and recieve data(default: utf8)'
     }
 }
