@@ -1,0 +1,4 @@
+#!/usr/bin/env perl
+use BiLingr;
+my $bilingr = BiLingr->new_with_config(configfile => $ARGV[0]);
+$bilingr->run;

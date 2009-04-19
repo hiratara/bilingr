@@ -1,0 +1,8 @@
+lingr:
+    api_key: api_key
+    room: room
+    nick: nick
+irc:
+    server: irc_server
+    channel: irc_channel
+    nick: irc_nick

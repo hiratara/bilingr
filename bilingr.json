@@ -1,0 +1,12 @@
+{
+    'lingr': {
+        'api_key': 'API_KEY',
+        'room'   : 'ROOM',
+        'nick'   : 'NICK'
+    },
+    'irc': {
+        'server' : 'IRC_SERVER',
+        'channel': 'IRC_CHANNEL',
+        'nick'   : 'IRC_NICK'
+    }
+}
