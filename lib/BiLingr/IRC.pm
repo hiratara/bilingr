@@ -76,7 +76,7 @@ event said => sub {
 	my $enc_what = Encode::encode($self->charset, $what);
 
 	$self->_irc->yield(
-		privmsg => $self->channel, "$enc_who: $enc_what",
+		notice => $self->channel, "$enc_who: $enc_what",
 	);
 };
 
