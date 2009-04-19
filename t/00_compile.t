@@ -1,6 +1,9 @@
 use strict;
-use Test::More tests => 1;
+use Test::More tests => 4;
 
 BEGIN { 
-	use_ok qw/BiLingr BiLingr::Bot BiLingr::Lingr/;
+	use_ok 'BiLingr';
+	use_ok 'BiLingr::Bot';
+	use_ok 'BiLingr::Lingr';
+	use_ok 'BiLingr::IRC';
 }

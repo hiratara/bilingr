@@ -1,6 +1,7 @@
 package BiLingr::IRC;
 use MooseX::POE;
 use POE qw(Component::IRC);
+use Encode;
 
 has server => (
 	isa      => 'Str',
@@ -18,6 +19,12 @@ has channel => (
 	isa      => 'Str',
 	is       => 'ro',
 	required => 1,
+);
+
+has charset => (
+	isa      => 'Str',
+	is       => 'ro',
+	default  => 'utf8',
 );
 
 has lingr => (
@@ -52,19 +59,24 @@ event irc_001 => sub {
 };
 
 event irc_public => sub {
-	my ( $self, $who, $where, $what ) = @_[OBJECT, ARG0 .. $#_];
+	my ( $self, $who_where, $channel, $what ) = @_[OBJECT, ARG0 .. $#_];
+
+	my ($who, $where) = split /!/, $who_where, 2;
 
 	$poe_kernel->post(
 		$self->lingr => said => 
-		$who, $what,
+		$who, Encode::decode($self->charset, $what),
 	);
 };
 
 event said => sub {
 	my ( $self, $who, $what ) = @_[OBJECT, ARG0 .. $#_];
 
+	my $enc_who  = Encode::encode($self->charset, $who );
+	my $enc_what = Encode::encode($self->charset, $what);
+
 	$self->_irc->yield(
-		privmsg => $self->channel, "$who: $what",
+		privmsg => $self->channel, "$enc_who: $enc_what",
 	);
 };
 

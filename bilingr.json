@@ -7,6 +7,7 @@
     'irc': {
         'server' : 'IRC_SERVER',
         'channel': 'IRC_CHANNEL',
-        'nick'   : 'IRC_NICK'
+        'nick'   : 'IRC_NICK',
+        'charset': 'IRC_CHARSET'
     }
 }
