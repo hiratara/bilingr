@@ -9,6 +9,16 @@ has server => (
 	required => 1,
 );
 
+has port => (
+	isa      => 'Str',
+	is       => 'ro',
+);
+
+has password => (
+	isa      => 'Str',
+	is       => 'ro',
+);
+
 has nick => (
 	isa      => 'Str',
 	is       => 'ro',
@@ -47,9 +57,11 @@ has _irc => (
 sub START {
 	my ( $self ) = @_[OBJECT, ARG0 .. $#_];
 	my $irc = POE::Component::IRC->spawn( 
-		nick    => $self->nick,
+		nick     => $self->nick,
 		# ircname => $self->nick,
-		server  => $self->server,
+		server   => $self->server,
+		port     => $self->port,
+		password => $self->password,
 	);
 
 	$irc->yield( register => 'all' );

@@ -6,7 +6,9 @@
         'nick'   : 'bot nick name'
     },
     'irc': {
-        'server' : 'irc host name',
+        'server'   : 'irc host name',
+        'port'     : 'irc host port',
+        'password' : 'irc host password',
         'channel': 'channel name',
         'key'    : 'channel key (if needed)',
         'nick'   : 'bot nick name',
