@@ -8,6 +8,7 @@ requires 'MooseX::Getopt'           => '0.15';
 requires 'MooseX::ConfigFromFile'   => '0.02';
 requires 'POE::Component::Client::Lingr' => '0.04'; # 0.04_01
 requires 'POE::Component::IRC'      => '6.04';
+requires 'UNIVERSAL::require'       => '0.11';
 
 tests 't/*.t';
 author_tests 'xt';

@@ -1,11 +1,14 @@
 {
-    'lingr': {
+  "rooms" : [
+    {
+        'protocol' : 'Lingr',
         'api_key': 'your api key',
         'room'   : 'your room name',
         'pass'   : 'rooms password (if needed)',
         'nick'   : 'bot nick name'
     },
-    'irc': {
+    {
+        'protocol' : 'IRC',
         'server'   : 'irc host name',
         'port'     : 'irc host port',
         'password' : 'irc host password',
@@ -14,4 +17,5 @@
         'nick'   : 'bot nick name',
         'charset': 'charset of send and recieve data(default: utf8)'
     }
+  ]
 }

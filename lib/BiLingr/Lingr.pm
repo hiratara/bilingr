@@ -30,7 +30,7 @@ has irc => (
 	is         => 'rw',
 );
 
-has irc => (
+has parent => (
 	isa        => 'Int',
 	is         => 'rw',
 );
@@ -78,7 +78,7 @@ event 'lingr.room.observe' => sub {
 	for my $msg (@{ $event->{messages} || []}){
 		next unless $msg->{client_type} eq 'human';
 		$poe_kernel->post(
-			$self->irc => said => 
+			$self->parent => notify_message => 
 			$msg->{nickname}, $msg->{text},
 		);
 	}

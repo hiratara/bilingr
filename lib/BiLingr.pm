@@ -12,18 +12,11 @@ has +configfile => (
 	default => '',
 );
 
-has lingr => (
-	isa      => 'HashRef[Str]',
+has rooms => (
 	is       => 'ro',
+	isa      => 'ArrayRef[HashRef]',
 	required => 1,
 );
-
-has irc => (
-	isa      => 'HashRef[Str]',
-	is       => 'ro',
-	required => 1,
-);
-
 
 # required from MooseX::ConfigFromFile
 sub get_config_from_file{

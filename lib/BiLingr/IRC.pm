@@ -42,7 +42,7 @@ has charset => (
 	default  => 'utf8',
 );
 
-has lingr => (
+has parent => (
 	isa        => 'Int',
 	is         => 'rw',
 );
@@ -85,7 +85,7 @@ event irc_public => sub {
 	my ($who, $where) = split /!/, $who_where, 2;
 
 	$poe_kernel->post(
-		$self->lingr => said => 
+		$self->parent => notify_message => 
 		$who, Encode::decode($self->charset, $what),
 	);
 };
