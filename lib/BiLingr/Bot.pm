@@ -30,7 +30,10 @@ sub START {
 		);
 		push @{ $self->rooms }, $room;
 	}
+
+	$poe_kernel->sig( INT => 'sig_int' );
 }
+
 
 event notify_message => sub {
 	my ( $self, $who, $what ) = @_[OBJECT, ARG0 .. $#_];
@@ -42,6 +45,14 @@ event notify_message => sub {
 	}
 };
 
+
+event sig_int => sub {
+	my ( $self ) = @_[OBJECT, ARG0 .. $#_];
+	for my $room ( @{ $self->rooms } ){
+		$room->yield( 'exit_room' );
+	}
+	$poe_kernel->sig_handled;
+};
 
 
 no  MooseX::POE;

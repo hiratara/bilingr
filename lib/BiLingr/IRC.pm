@@ -102,5 +102,11 @@ event said => sub {
 };
 
 
+event exit_room => sub {
+	my ( $self ) = @_[OBJECT, ARG0 .. $#_];
+	$self->_irc->yield( 'shutdown' );
+};
+
+
 no  MooseX::POE;
 1;

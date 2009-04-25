@@ -105,5 +105,15 @@ event 'lingr.error.response' => sub {
 	die Dumper($event);
 };
 
+event exit_room => sub {
+	my ( $self ) = @_[OBJECT, ARG0 .. $#_];
+
+	# TODO: Not clean exit. Observer process may not be finished.
+	$poe_kernel->post(
+		$self->_lingr => 'call' => 
+		'room.exit', {},
+	);
+};
+
 no  MooseX::POE;
 1;
