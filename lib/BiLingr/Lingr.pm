@@ -97,7 +97,7 @@ event said => sub {
 use Data::Dumper;
 event 'lingr.error.http' => sub {
 	my ( $self, $event ) = @_[OBJECT, ARG0 .. $#_];
-	die Dumper($event);
+	warn Dumper($event);
 };
 
 event 'lingr.error.response' => sub {
