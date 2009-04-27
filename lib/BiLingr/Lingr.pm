@@ -108,12 +108,21 @@ event 'lingr.error.response' => sub {
 event exit_room => sub {
 	my ( $self ) = @_[OBJECT, ARG0 .. $#_];
 
-	# TODO: Not clean exit. Observer process may not be finished.
 	$poe_kernel->post(
 		$self->_lingr => 'call' => 
 		'room.exit', {},
 	);
 };
+
+event 'lingr.room.exit' => sub {
+	my ( $self ) = @_[OBJECT, ARG0 .. $#_];
+
+	$poe_kernel->post( $self->_lingr => 'unregister' );
+	# TODO: Not clean exit. Observer process make an invalid request 
+	#       after exit.
+	#       (If ticket error is occured, the observer will be stopped.)
+};
+
 
 no  MooseX::POE;
 1;
